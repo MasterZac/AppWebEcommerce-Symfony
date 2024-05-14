@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Shop{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.svg')}}" />
         {% block stylesheets %}
             <link rel="stylesheet" href="{{asset('css/bootstrap.min.css') }}"/>
             <link rel="stylesheet" href="{{asset('css/LineIcons.3.0.css') }}"/>
@@ -14,6 +16,17 @@
     </head>
     <body>
         {% block body %}
+            <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-inner">
+                <div class="preloader-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- /End Preloader -->
+
         <!-- Start Header Area -->
         <header class="header navbar-area">
             <!-- Start Topbar -->
@@ -101,7 +114,7 @@
                                                             class="lni lni-close"></i></a>
                                                     <div class="cart-img-head">
                                                         <a class="cart-img" href="product-details.html"><img
-                                                                src="assets/images/header/cart-items/item1.jpg" alt="#"></a>
+                                                                src="{{asset('images/header/cart-items/item1.jpg')}}" alt="#"></a>
                                                     </div>
                                                     <div class="content">
                                                         <h4><a href="product-details.html">
@@ -146,16 +159,16 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul id="nav" class="navbar-nav ms-auto">
                                         <li class="nav-item">
-                                            <a href="index.html" class="active" aria-label="Toggle navigation">Inicio</a>
+                                            <a href="{{path('app_inicio')}}" class="active" aria-label="Toggle navigation">Inicio</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="Nosotros.html" aria-label="Toggle navigation">Nosotros</a>
+                                            <a href="{{path('app_nosotros')}}" aria-label="Toggle navigation">Nosotros</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="product-details.html" aria-label="Toggle navigation">Tienda</a>
+                                            <a href="{{path('app_tienda')}}" aria-label="Toggle navigation">Tienda</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="contactanos.html" aria-label="Toggle navigation">Contactanos</a>
+                                            <a href="" aria-label="Toggle navigation">Contactanos</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -254,18 +267,18 @@
                             </div>
                             <div class="col-lg-9 col-md-8 col-12">
                                 <div class="footer-newsletter">
-                                    <h4 class="title">
+                                    {# <h4 class="title">
                                         Subscribete a nuestro boletin
                                         <span>Obtenga toda la informacion mas reciente, ventas y ofertas.</span>
-                                    </h4>
-                                    <div class="newsletter-form-head">
+                                    </h4> #}
+                                    {# <div class="newsletter-form-head">
                                         <form action="#" method="get" target="_blank" class="newsletter-form">
                                             <input name="EMAIL" placeholder="Email address here..." type="email">
                                             <div class="button">
                                                 <button class="btn">Subscribe<span class="dir-part"></span></button>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> #}
                                 </div>
                             </div>
                         </div>
@@ -335,7 +348,7 @@
                             <div class="col-lg-4 col-12">
                                 <div class="payment-gateway">
                                     <span>Aceptamos:</span>
-                                    <img src="assets/images/footer/credit-cards-footer.png" alt="#">
+                                    <img src="{{asset('images/footer/credit-cards-footer.png')}}" alt="#">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-12">
@@ -367,6 +380,7 @@
             <i class="lni lni-chevron-up"></i>
         </a>
         {% endblock %}
+
         {% block javascripts %}
             <script src="{{asset('js/bootstrap.min.js') }}"></script>
             <script src="{{asset('js/tiny-slider.js') }}"></script>

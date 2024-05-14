@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    {{parent()}}
+    <section class="history-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h2>Nuestra Historia</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="history-img">
+                        <img src="{{asset('images/Grupo de personas.jpg')}}" alt="Imagen de la historia de la empresa">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="history-content">
+                        <p>En marzo de 2023, tres amigas emprendedoras, Dania, Alondra y Rubi, decidieron dar vida a un proyecto revolucionario durante el concurso "Innovatec". Tras obtener el segundo lugar, el impulso fue tan fuerte que optaron por llevar su vision más allá de las aulas.</p>
+                        <p>En agosto del mismo año, el equipo tomó un nuevo impulso con la incorporación de tres socias más, Saraí, Diana y Fátima. Esta adición no solo amplió la base de talento y experiencia, sino que tambien marcó un hito significativo en la evolución de la empresa.</p>
+                        <p>Para hacer la visión de su producto innovador, el equipo de emprendedoras contó con el apoyo crucial de ingenieros en mecatrónica para el desarrollo del prototipo. Esta colaboración estratégica permitio el desarrollo y perfeccionamiento del producto, asegurando que las pulseras de anillos no solo fueran estilizadas, sino también tecnologicamente avanzadas.</p>
+                        <p>Así, lo que comenzó como un proyecto escolar se transformó en una empresa vibrante con una mezcla única de creatividad y tecnologia. La historia de este emprendimiento destaca la importancia de la colaboracion, la innovación y la determinación en la creación de soluciones únicas para el mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+{% endblock %}
