@@ -168,7 +168,7 @@
                                             <a href="{{path('app_tienda')}}" aria-label="Toggle navigation">Tienda</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="" aria-label="Toggle navigation">Contactanos</a>
+                                            <a href="{{path('app_contactanos')}}" aria-label="Toggle navigation">Contactanos</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -182,13 +182,13 @@
                             <h5 class="title">Siganos:</h5>
                             <ul>
                                 <li>
-                                    <a href="https://www.facebook.com/profile.php?id=61557712883795"><i class="lni lni-facebook-filled"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=61557712883795" target = "_blank"><i class="lni lni-facebook-filled"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/smartfingers12_/"><i class="lni lni-instagram-filled"></i></a>
+                                    <a href="https://www.instagram.com/smartfingers12_/" target = "_blank"><i class="lni lni-instagram-filled"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://www.tiktok.com/@smartfingers12_?is_from_webapp=1&sender_device=pc"><i class="lni lni-tiktok"></i></a>
+                                    <a href="https://www.tiktok.com/@smartfingers12_?is_from_webapp=1&sender_device=pc" target = "_blank"><i class="lni lni-tiktok"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -301,7 +301,7 @@
                                         <li><span>Sabado: </span> 10.00 am - 6.00 pm</li>
                                     </ul>
                                     <p class="mail">
-                                        <a href="mailto:support@shopgrids.com">support@shopgrids.com</a>
+                                        <a href="mailto:">correo@gmail.com</a>
                                     </p>
                                 </div>
                                 <!-- End Single Widget -->
@@ -311,10 +311,10 @@
                                 <div class="single-footer f-link">
                                     <h3>Enlaces</h3>
                                     <ul>
-                                        <li><a href="index.html">Inicio</a></li>
-                                        <li><a href="Nosotros.html">Nosotros</a></li>
-                                        <li><a href="contactanos.html">Contactanos</a></li>
-                                        <li><a href="product-details.html">Tienda</a></li>
+                                        <li><a href="{{path('app_inicio')}}">Inicio</a></li>
+                                        <li><a href="{{path('app_nosotros')}}">Nosotros</a></li>
+                                        <li><a href="{{path('app_contactanos')}}">Contactanos</a></li>
+                                        <li><a href="{{path('app_tienda')}}">Tienda</a></li>
                                     </ul>
                                 </div>
                                 <!-- End Single Widget -->
