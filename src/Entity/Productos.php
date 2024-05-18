@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,6 +31,17 @@ class Productos
     #[ORM\ManyToOne(inversedBy: 'productos')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorias $categoria = null;
+
+    /**
+     * @var Collection<int, CarroCompra>
+     */
+    #[ORM\OneToMany(targetEntity: CarroCompra::class, mappedBy: 'producto', orphanRemoval: true)]
+    private Collection $carroCompras;
+
+    public function __construct()
+    {
+        $this->carroCompras = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -91,6 +104,36 @@ class Productos
     public function setCategoria(?Categorias $categoria): static
     {
         $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CarroCompra>
+     */
+    public function getCarroCompras(): Collection
+    {
+        return $this->carroCompras;
+    }
+
+    public function addCarroCompra(CarroCompra $carroCompra): static
+    {
+        if (!$this->carroCompras->contains($carroCompra)) {
+            $this->carroCompras->add($carroCompra);
+            $carroCompra->setProducto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarroCompra(CarroCompra $carroCompra): static
+    {
+        if ($this->carroCompras->removeElement($carroCompra)) {
+            // set the owning side to null (unless already changed)
+            if ($carroCompra->getProducto() === $this) {
+                $carroCompra->setProducto(null);
+            }
+        }
 
         return $this;
     }

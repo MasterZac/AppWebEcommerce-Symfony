@@ -14,7 +14,7 @@
                         <div class="hero-slider">
                             <!-- Start Single Slider -->
                             <div class="single-slider"
-                                style="background-image: url({{asset('images/hero/IMG-20231127-WA0142_adobe_express.png')}});">
+                                style="background-image: url({{asset('frontend/images/hero/IMG-20231127-WA0142_adobe_express.png')}});">
                                 <div class="content">
                                     <h2><span>Tecnologia innovadora</span>
                                         Smart Fingers
@@ -22,22 +22,22 @@
                                     <p>Control por movimiento aereo adaptado a la mano humana.</p>
                                     <h3><span></span></h3>
                                     <div class="button">
-                                        <a href="product-details.html" class="btn">Comprar ahora</a>
+                                        <a href="{{path('app_tienda')}}" class="btn">Comprar ahora</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Slider -->
                             <!-- Start Single Slider -->
                             <div class="single-slider"
-                                style="background-image: url({{asset('images/hero/IMG-20231128-WA0185_adobe_express.png')}});">
+                                style="background-image: url({{asset('frontend/images/hero/IMG-20231128-WA0185_adobe_express.png')}});">
                                 <div class="content">
-                                    <h2><span>Tecnologia inovadora</span>
+                                    <h2><span>Tecnologia innovadora</span>
                                         Smart Fingers
                                     </h2>
                                     <p>Libertad de movimiento para manejar los dispositivos a distancia.</p>
                                     <h3><span></span></h3>
                                     <div class="button">
-                                        <a href="product-grids.html" class="btn">Comprar ahora</a>
+                                        <a href="{{path('app_tienda')}}" class="btn">Comprar ahora</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,10 +51,10 @@
                         <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
                             <!-- Start Small Banner -->
                             <div class="hero-small-banner"
-                                style="background-image: url({{asset('images/hero/')}});">
+                                style="background-image: url({{asset('frontend/images/hero/')}});">
                                 <div class="content">
                                     <video width="320" height="240" controls autoplay>
-                                        <source src="video/VID-20240320-WA0005 (1).mp4" type="video/mp4">
+                                        <source src="{{asset('frontend/video/VID-20240320-WA0005 (1).mp4')}}" type="video/mp4">
                                         Tu navegador no soporta el elemento de video.
                                     </video>
                                 </div>
@@ -189,7 +189,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-product">
                         <div class="product-image">
-                            <img src="{{asset('images/hero/IMG-20231128-WA0185_adobe_express.png')}}" style="height: 100;" alt="#" >
+                            <img src="{{asset('frontend/images/hero/IMG-20231128-WA0185_adobe_express.png')}}" style="height: 100;" alt="#">
                             <div class="button">
                                 <a href="{{path('app_tienda')}}" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                             </div>
@@ -216,7 +216,6 @@
             </div>
         </div>
     </section>
-
 {% endblock %}
 
 {% block javascripts %}

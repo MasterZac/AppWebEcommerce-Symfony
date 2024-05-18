@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Usuarios;
+use App\Entity\Paqueteria;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Usuarios>
+ * @extends ServiceEntityRepository<Paqueteria>
  */
-class UsuariosRepository extends ServiceEntityRepository
+class PaqueteriaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Usuarios::class);
+        parent::__construct($registry, Paqueteria::class);
     }
 
     //    /**
-    //     * @return Usuarios[] Returns an array of Usuarios objects
+    //     * @return Paqueteria[] Returns an array of Paqueteria objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('u.id', 'ASC')
+    //            ->orderBy('p.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Usuarios
+    //    public function findOneBySomeField($value): ?Paqueteria
     //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

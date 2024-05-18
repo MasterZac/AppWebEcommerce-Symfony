@@ -7,11 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.svg')}}" />
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css') }}"/>
-            <link rel="stylesheet" href="{{asset('css/LineIcons.3.0.css') }}"/>
-            <link rel="stylesheet" href="{{asset('css/tiny-slider.css') }}"/>
-            <link rel="stylesheet" href="{{asset('css/glightbox.min.css') }}"/>
-            <link rel="stylesheet" href="{{asset('css/main1.css') }}">
+            <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css') }}"/>
+            <link rel="stylesheet" href="{{asset('frontend/css/LineIcons.3.0.css') }}"/>
+            <link rel="stylesheet" href="{{asset('frontend/css/tiny-slider.css') }}"/>
+            <link rel="stylesheet" href="{{asset('frontend/css/glightbox.min.css') }}"/>
+            <link rel="stylesheet" href="{{asset('frontend/css/main1.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -54,14 +54,13 @@
                             <div class="top-end">
                                 <div class="user">
                                     <i class="lni lni-user"></i>
-                                    Hola
                                 </div>
                                 <ul class="user-login">
                                     <li>
-                                        <a href="Login.html">Iniciar sesión</a>
+                                        <a href="{{path('app_login')}}">Iniciar sesión</a>
                                     </li>
                                     <li>
-                                        <a href="Login.html">Registro</a>
+                                        <a href="{{path('userRegistro')}}">Registro</a>
                                     </li>
                                 </ul>
                             </div>
@@ -78,7 +77,7 @@
                         <div class="col-lg-5 col-md-3 col-7">
                             <!-- Start Header Logo -->
                             <a class="navbar-brand" href="index.html">
-                                <img src="{{asset('images/logo/logo copia.png')}}" alt="Logo" height="100">
+                                <img src="{{asset('frontend/images/logo/logoR.png')}}" alt="Logo" height="55">
                             </a>
                             <!-- End Header Logo -->
                         </div>
@@ -105,7 +104,7 @@
                                         <!-- Shopping Item -->
                                         <div class="shopping-item">
                                             <div class="dropdown-cart-header">
-                                                <span>2 Articulos</span>
+                                                <span>1 Articulos</span>
                                                 <a href="product-details.html">Ver Carrito</a>
                                             </div>
                                             <ul class="shopping-list">
@@ -114,7 +113,7 @@
                                                             class="lni lni-close"></i></a>
                                                     <div class="cart-img-head">
                                                         <a class="cart-img" href="product-details.html"><img
-                                                                src="{{asset('images/header/cart-items/item1.jpg')}}" alt="#"></a>
+                                                                src="{{asset('frontend/images/header/cart-items/item1.jpg')}}" alt="#"></a>
                                                     </div>
                                                     <div class="content">
                                                         <h4><a href="product-details.html">
@@ -200,6 +199,7 @@
         </header>
         <!-- End Header Area -->
         {% endblock %}
+
         {% block footer %}
             <!-- Start Shipping Info -->
         <section class="shipping-info">
@@ -348,7 +348,7 @@
                             <div class="col-lg-4 col-12">
                                 <div class="payment-gateway">
                                     <span>Aceptamos:</span>
-                                    <img src="{{asset('images/footer/credit-cards-footer.png')}}" alt="#">
+                                    <img src="{{asset('frontend/images/footer/credit-cards-footer.png')}}" alt="#">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-12">
@@ -382,10 +382,10 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script src="{{asset('js/bootstrap.min.js') }}"></script>
-            <script src="{{asset('js/tiny-slider.js') }}"></script>
-            <script src="{{asset('js/gligthbox.min.js') }}"></script>
-            <script src="{{asset('js/main.js') }}"></script>
+            <script src="{{asset('frontend/js/bootstrap.min.js') }}"></script>
+            <script src="{{asset('frontend/js/tiny-slider.js') }}"></script>
+            <script src="{{asset('frontend/js/gligthbox.min.js') }}"></script>
+            <script src="{{asset('frontend/js/main.js') }}"></script>
         {% endblock %}
     </body>
 </html>

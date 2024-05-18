@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Registro{% endblock %}</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.svg')}}"/>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css') }}"/>
+        {% endblock %}
+    </head>
+    <body>
+        {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('app_login') }}" method="post">
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password">
+
+            <input type="hidden" name="_target_path" value="/"> 
+            <button type="submit">login</button>
+        </form>
+    {% block javascripts %}
+        <script src="{{asset('js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+    </body>
+</html>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DireccionDeEnvioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,50 +16,73 @@ class DireccionDeEnvio
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $calle = null;
+    #[ORM\ManyToOne(inversedBy: 'direccionDeEnvios')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $usuario = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ciudad = null;
+    private ?string $Calle = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Ciudad = null;
 
     #[ORM\Column]
     private ?int $codigoPostal = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $pais = null;
+    private ?string $Pais = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $informacionAdicional = null;
+    private ?string $informacion_adicional = null;
 
-    #[ORM\ManyToOne(inversedBy: 'direccionDeEnvios')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Usuarios $usuario = null;
+    /**
+     * @var Collection<int, Pedido>
+     */
+    #[ORM\OneToMany(targetEntity: Pedido::class, mappedBy: 'direccion_envio', orphanRemoval: true)]
+    private Collection $pedidos;
+
+    public function __construct()
+    {
+        $this->pedidos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCalle(): ?string
+    public function getUsuario(): ?User
     {
-        return $this->calle;
+        return $this->usuario;
     }
 
-    public function setCalle(string $calle): static
+    public function setUsuario(?User $usuario): static
     {
-        $this->calle = $calle;
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    public function getCalle(): ?string
+    {
+        return $this->Calle;
+    }
+
+    public function setCalle(string $Calle): static
+    {
+        $this->Calle = $Calle;
 
         return $this;
     }
 
     public function getCiudad(): ?string
     {
-        return $this->ciudad;
+        return $this->Ciudad;
     }
 
-    public function setCiudad(string $ciudad): static
+    public function setCiudad(string $Ciudad): static
     {
-        $this->ciudad = $ciudad;
+        $this->Ciudad = $Ciudad;
 
         return $this;
     }
@@ -76,36 +101,54 @@ class DireccionDeEnvio
 
     public function getPais(): ?string
     {
-        return $this->pais;
+        return $this->Pais;
     }
 
-    public function setPais(string $pais): static
+    public function setPais(string $Pais): static
     {
-        $this->pais = $pais;
+        $this->Pais = $Pais;
 
         return $this;
     }
 
     public function getInformacionAdicional(): ?string
     {
-        return $this->informacionAdicional;
+        return $this->informacion_adicional;
     }
 
-    public function setInformacionAdicional(?string $informacionAdicional): static
+    public function setInformacionAdicional(?string $informacion_adicional): static
     {
-        $this->informacionAdicional = $informacionAdicional;
+        $this->informacion_adicional = $informacion_adicional;
 
         return $this;
     }
 
-    public function getUsuario(): ?Usuarios
+    /**
+     * @return Collection<int, Pedido>
+     */
+    public function getPedidos(): Collection
     {
-        return $this->usuario;
+        return $this->pedidos;
     }
 
-    public function setUsuario(?Usuarios $usuario): static
+    public function addPedido(Pedido $pedido): static
     {
-        $this->usuario = $usuario;
+        if (!$this->pedidos->contains($pedido)) {
+            $this->pedidos->add($pedido);
+            $pedido->setDireccionEnvio($this);
+        }
+
+        return $this;
+    }
+
+    public function removePedido(Pedido $pedido): static
+    {
+        if ($this->pedidos->removeElement($pedido)) {
+            // set the owning side to null (unless already changed)
+            if ($pedido->getDireccionEnvio() === $this) {
+                $pedido->setDireccionEnvio(null);
+            }
+        }
 
         return $this;
     }
