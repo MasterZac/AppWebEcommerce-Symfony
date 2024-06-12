@@ -66,7 +66,7 @@ class CarritoController extends AbstractController
         $em->flush();
 
         $this->addFlash('success', 'Producto agregado al carrito');
-        return $this->redirectToRoute('tienda'); // Ajusta la ruta de redirección según sea necesario
+        return $this->redirectToRoute('app_tienda'); // Ajusta la ruta de redirección según sea necesario
     }
 
     #[Route('/remove-from-cart/{id}', name: 'remove_from_cart', methods: ['POST'])]
@@ -83,6 +83,7 @@ class CarritoController extends AbstractController
         $this->entityManager->flush();
 
         $this->addFlash('success', 'Producto eliminado del carrito');
+        return $this->redirectToRoute('carro_compra');
     }
 
 

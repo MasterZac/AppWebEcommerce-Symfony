@@ -7,6 +7,14 @@
     <div class="container mt-5">
         <h1 class="mb-4">Carrito de Compras</h1>
 
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <script>
+                    alert('{{ message|e('js') }}');
+                </script>
+            {% endfor %}
+        {% endfor %}
+
         {% if items|length > 0 %}
             <div class="row">
                 <div class="col-12">

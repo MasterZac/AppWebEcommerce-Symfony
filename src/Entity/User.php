@@ -54,11 +54,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: CarroCompra::class, mappedBy: 'usuario', orphanRemoval: true)]
     private Collection $carroCompras;
 
-    /**
-     * @var Collection<int, Tarjeta>
-     */
-    #[ORM\OneToMany(targetEntity: Tarjeta::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $tarjetas;
+    // /**
+    //  * @var Collection<int, Tarjeta>
+    //  */
+    // #[ORM\OneToMany(targetEntity: Tarjeta::class, mappedBy: 'user', orphanRemoval: true)]
+    // private Collection $tarjetas;
 
     public function __construct($id = null, $email = null, $password = null, $nombre = null)
     {
@@ -69,7 +69,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->direccionDeEnvios = new ArrayCollection();
         $this->pedidos = new ArrayCollection();
         $this->carroCompras = new ArrayCollection();
-        $this->tarjetas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,33 +248,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Tarjeta>
-     */
-    public function getTarjetas(): Collection
-    {
-        return $this->tarjetas;
-    }
+    // /**
+    //  * @return Collection<int, Tarjeta>
+    //  */
+    // public function getTarjetas(): Collection
+    // {
+    //     return $this->tarjetas;
+    // }
 
-    public function addTarjeta(Tarjeta $tarjeta): static
-    {
-        if (!$this->tarjetas->contains($tarjeta)) {
-            $this->tarjetas->add($tarjeta);
-            $tarjeta->setUser($this);
-        }
+    // public function addTarjeta(Tarjeta $tarjeta): static
+    // {
+    //     if (!$this->tarjetas->contains($tarjeta)) {
+    //         $this->tarjetas->add($tarjeta);
+    //         $tarjeta->setUser($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeTarjeta(Tarjeta $tarjeta): static
-    {
-        if ($this->tarjetas->removeElement($tarjeta)) {
-            // set the owning side to null (unless already changed)
-            if ($tarjeta->getUser() === $this) {
-                $tarjeta->setUser(null);
-            }
-        }
+    // public function removeTarjeta(Tarjeta $tarjeta): static
+    // {
+    //     if ($this->tarjetas->removeElement($tarjeta)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($tarjeta->getUser() === $this) {
+    //             $tarjeta->setUser(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

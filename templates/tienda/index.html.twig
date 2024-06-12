@@ -24,6 +24,15 @@
     </div>
     <!-- End Breadcrumbs -->
 
+    {# Mostrar mensajes flash con un alert #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <script>
+                alert('{{ message|e('js') }}');
+            </script>
+        {% endfor %}
+    {% endfor %}
+
     <!-- Start Item Details -->
     <section class="item-details section">
         <div class="container">
