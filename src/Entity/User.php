@@ -54,6 +54,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: CarroCompra::class, mappedBy: 'usuario', orphanRemoval: true)]
     private Collection $carroCompras;
 
+    /**
+     * @var Collection<int, Tarjeta>
+     */
+    #[ORM\OneToMany(targetEntity: Tarjeta::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $tarjetas;
+
     public function __construct($id = null, $email = null, $password = null, $nombre = null)
     {
         $this->id = $id;
@@ -63,6 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->direccionDeEnvios = new ArrayCollection();
         $this->pedidos = new ArrayCollection();
         $this->carroCompras = new ArrayCollection();
+        $this->tarjetas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +243,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($carroCompra->getUsuario() === $this) {
                 $carroCompra->setUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tarjeta>
+     */
+    public function getTarjetas(): Collection
+    {
+        return $this->tarjetas;
+    }
+
+    public function addTarjeta(Tarjeta $tarjeta): static
+    {
+        if (!$this->tarjetas->contains($tarjeta)) {
+            $this->tarjetas->add($tarjeta);
+            $tarjeta->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTarjeta(Tarjeta $tarjeta): static
+    {
+        if ($this->tarjetas->removeElement($tarjeta)) {
+            // set the owning side to null (unless already changed)
+            if ($tarjeta->getUser() === $this) {
+                $tarjeta->setUser(null);
             }
         }
 

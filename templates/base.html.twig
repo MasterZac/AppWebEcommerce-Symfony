@@ -5,7 +5,7 @@
         <title>{% block title %}Shop{% endblock %}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.svg')}}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/images/favicon.svg')}}" />
         {% block stylesheets %}
             <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css') }}"/>
             <link rel="stylesheet" href="{{asset('frontend/css/LineIcons.3.0.css') }}"/>
@@ -52,17 +52,31 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="top-end">
-                                <div class="user">
-                                    <i class="lni lni-user"></i>
-                                </div>
-                                <ul class="user-login">
-                                    <li>
-                                        <a href="{{path('app_login')}}">Iniciar sesión</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{path('userRegistro')}}">Registro</a>
-                                    </li>
-                                </ul>
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-primary">
+                                            <i class="lni lni-user"></i> {{app.user.nombre}}
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Direcciones</a></li>
+                                            <li><a class="dropdown-item" href="#">Tarjetas</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar sesión</a></li>
+                                        </ul>
+                                    </div>
+                                {% else %}
+                                    <ul class="user-login">
+                                        <li>
+                                            <a href="{{path('app_login')}}">Iniciar sesión</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('userRegistro')}}">Registro</a>
+                                        </li>
+                                    </ul>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -89,23 +103,23 @@
                                         <span>(+100) 123 456 7890</span>
                                     </h3>
                                 </div>
-                                <div class="navbar-cart">
-                                    <div class="wishlist">
+                                <!--<div class="navbar-cart">
+                                    {# <div class="wishlist">
                                         <a href="">
                                             <i class="lni lni-heart"></i>
                                             <span class="total-items">1</span>
                                         </a>
-                                    </div>
+                                    </div> #}
                                     <div class="cart-items">
                                         <a href="" class="main-btn">
                                             <i class="lni lni-cart"></i>
-                                            <span class="total-items">2</span>
+                                            <span class="total-items">1</span>
                                         </a>
-                                        <!-- Shopping Item -->
+                                        
                                         <div class="shopping-item">
                                             <div class="dropdown-cart-header">
                                                 <span>1 Articulos</span>
-                                                <a href="product-details.html">Ver Carrito</a>
+                                                {# <a href="">Ver Carrito</a> #}
                                             </div>
                                             <ul class="shopping-list">
                                                 <li>
@@ -113,11 +127,11 @@
                                                             class="lni lni-close"></i></a>
                                                     <div class="cart-img-head">
                                                         <a class="cart-img" href="product-details.html"><img
-                                                                src="{{asset('frontend/images/header/cart-items/item1.jpg')}}" alt="#"></a>
+                                                                {# src="{{asset('frontend/images/header/cart-items/item1.jpg')}}" alt="#"></a> #}
                                                     </div>
                                                     <div class="content">
                                                         <h4><a href="product-details.html">
-                                                                Apple Watch Series 6</a></h4>
+                                                                Smart Fingers</a></h4>
                                                         <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                                     </div>
                                                 </li>
@@ -125,14 +139,14 @@
                                             <div class="bottom">
                                                 <div class="total">
                                                     <span>Total</span>
-                                                    <span class="total-amount">$134.00</span>
+                                                    <span class="total-amount">$250.00</span>
                                                 </div>
                                                 <div class="button">
-                                                    <a href="checkout.html" class="btn animate">Checkout</a>
+                                                    <a href="" class="btn animate">Checkout</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--/ End Shopping Item -->
+                                        -->
                                     </div>
                                 </div>
                             </div>
@@ -382,10 +396,13 @@
         {% endblock %}
 
         {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="{{asset('frontend/js/bootstrap.min.js') }}"></script>
             <script src="{{asset('frontend/js/tiny-slider.js') }}"></script>
             <script src="{{asset('frontend/js/gligthbox.min.js') }}"></script>
             <script src="{{asset('frontend/js/main.js') }}"></script>
+            <script src="{{asset('frontend/js/Add_cart.js')}}"></script>
         {% endblock %}
     </body>
 </html>

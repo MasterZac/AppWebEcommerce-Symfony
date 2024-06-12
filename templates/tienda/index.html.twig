@@ -16,7 +16,7 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="{{path('app_inicio')}}"><i class="lni lni-home"></i> Home</a></li>
-                        <li>Single Product</li>
+                        <li>Producto unico</li>
                     </ul>
                 </div>
             </div>
@@ -33,14 +33,14 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="{{asset('images/product-details/IMG-20231127-WA0142_adobe_express.png')}}" id="current"  height="500" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/IMG-20231127-WA0142_adobe_express.png')}}" id="current"  height="500" alt="#">
                                 </div>
                                 <div class="images">
-                                    <img src="{{asset('images/product-details/IMG-20231127-WA0143_adobe_express.png')}}" class="img" height="" alt="#">
-                                    <img src="{{asset('images/product-details/IMG-20231127-WA0145_adobe_express.png')}}" class="img" height="" alt="#">
-                                    <img src="{{asset('images/product-details/IMG-20231127-WA0146_adobe_express.png')}}" class="img" height="" alt="#">
-                                    <img src="{{asset('images/product-details/IMG-20231128-WA0185_adobe_express.png')}}" class="img" height="" alt="#">
-                                    <img src="{{asset('images/product-details/Imagen4.jpg')}}" class="img" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/IMG-20231127-WA0143_adobe_express.png')}}" class="img" height="" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/IMG-20231127-WA0145_adobe_express.png')}}" class="img" height="" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/IMG-20231127-WA0146_adobe_express.png')}}" class="img" height="" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/IMG-20231128-WA0185_adobe_express.png')}}" class="img" height="" alt="#">
+                                    <img src="{{asset('frontend/images/product-details/Imagen4.jpg')}}" class="img" alt="#">
                                 </div>
                             </main>
                         </div>
@@ -48,74 +48,42 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
                             <h2 class="title">Smart Fingers</h2>
-                            <p class="category"><i class="lni lni-tag"></i> Mouse:<a href="javascript:void(0)">Raton/Control por movimiento aéreo adaptado a la mano humana.</a></p>
-                            <h3 class="price">$850<span>$945</span></h3>
+                            <p class="category"><i class="lni lni-tag"></i> Mouse:<a href="">Raton/Control por movimiento aéreo adaptado a la mano humana.</a></p>
+                            <h3 class="price">$500<span>$500</span></h3>
                             <p class="info-text"></p>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="form-group color-option">
-                                        <label class="title-label" for="size">Color</label>
-                                        <div class="single-checkbox checkbox-style-1">
-                                            <input type="checkbox" id="checkbox-1" checked>
-                                            <label for="checkbox-1"><span></span></label>
-                                        </div>
-                                        <!-- <div class="single-checkbox checkbox-style-2">
-                                            <input type="checkbox" id="checkbox-2">
-                                            <label for="checkbox-2"><span></span></label>
-                                        </div>
-                                        <div class="single-checkbox checkbox-style-3">
-                                            <input type="checkbox" id="checkbox-3">
-                                            <label for="checkbox-3"><span></span></label>
-                                        </div>
-                                        <div class="single-checkbox checkbox-style-4">
-                                            <input type="checkbox" id="checkbox-4">
-                                            <label for="checkbox-4"><span></span></label>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <!-- <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="color">Battery capacity</label>
-                                        <select class="form-control" id="color">
-                                            <option>5100 mAh</option>
-                                            <option>6200 mAh</option>
-                                            <option>8000 mAh</option>
-                                        </select>
-                                    </div>
-                                </div> -->
-                                <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="form-group quantity">
-                                        <label for="cantidad">Cantidad</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bottom-content">
-                                <div class="row align-items-end">
+                            <form method="post" action="{{path('add_to_cart')}}">
+                                <input type="hidden" name="product_id" value="2">
+                                <div class="row">
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="button cart-button">
-                                            <button class="btn" style="width: 100%;">Agregar al carro</button>
+                                        <div class="form-group color-option">
+                                            <label class="title-label" for="size">Color</label>
+                                            <div class="single-checkbox checkbox-style-1">
+                                                <input type="checkbox" id="checkbox-1" checked>
+                                                <label for="checkbox-1"><span></span></label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i> Compare</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
+                                        <div class="form-group quantity">
+                                            <label for="cantidad">Cantidad</label>
+                                            <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="100" value="1">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="bottom-content">
+                                    <div class="row align-items-end">
+                                        <div class="col-lg-4 col-md-4 col-12">
+                                            <div class="button cart-button">
+                                                <button type="submit" class="btn" style="width: 100%;">Agregar al carro</button>
+                                            </div>
+                                            <br/>
+                                            <div class = "button">
+                                                <a href="{{path('carro_compra')}}" class="btn btn-secondary">Ir al carrito</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -255,5 +223,34 @@
                 e.target.style.opacity = opacity;
             });
         });
+
+        {# $(document).ready(function() {
+        $('#add-to-cart-button').on('click', function() {
+            // Recopilar datos del formulario
+            var formData = {
+                product_id: $('input[name="product_id"]').val(),
+                color: $('input[name="color"]:checked').val(),
+                cantidad: $('#cantidad').val()
+            };
+
+            // Enviar los datos al backend usando AJAX
+            $.ajax({
+                url: '{{ path("add_to_cart") }}', // Symfony route
+                method: 'POST',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function(response) {
+                    // Manejar la respuesta del servidor
+                    alert('Producto agregado al carrito!');
+                },
+                error: function(xhr, status, error) {
+                    // Manejar el error
+                    alert('Error al agregar producto al carrito.');
+                }
+            });
+        });
+    });
+         #}
+
     </script>
 {% endblock %}

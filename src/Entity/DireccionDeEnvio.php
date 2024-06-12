@@ -31,7 +31,7 @@ class DireccionDeEnvio
 
     #[ORM\Column(length: 255)]
     private ?string $Pais = null;
-
+    
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $informacion_adicional = null;
 

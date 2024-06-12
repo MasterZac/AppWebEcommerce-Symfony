@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}{% endblock %}
+
+{% block body %}
+    {{parent()}}
+    <div class="container mt-5">
+        <h1 class="mb-4">Carrito de Compras</h1>
+
+        {% if items|length > 0 %}
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td>{{ item.producto.id }}</td>
+                                    <td>{{ item.cantidad }}</td>
+                                    <td>${{ item.producto.Precio }}</td>
+                                    <td>${{ item.producto.Precio * item.cantidad }}</td>
+                                    <td>
+                                        <form action="{{ path('remove_from_cart', {'id': item.id}) }}" method="post" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-right">
+                    <h4>Total: ${{ items|reduce((carry, item) => carry + item.producto.Precio * item.cantidad, 0) }}</h4>
+                    <a href="" class="btn btn-primary ">Proceder al pago</a>
+                    <a href="{{path('app_tienda')}}" class="btn btn-warning">Cancelar</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                No hay artículos en tu carrito.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,11 +1,23 @@
 body{
-    background: #293241;
+    background-image: url(../images/Login/image.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .container {
     margin-top: 50px;
 }
 
+.card-header {
+    background-color: #007bff !important; /* Cambia este color al que prefieras */
+    color: white !important; /* Asegura que el texto sea visible */
+}
+
+.custom-card-header {
+    background-color: #007bff !important; /* Cambia este color al que prefieras */
+    color: white !important; /* Asegura que el texto sea visible */
+}
 .form-group{
     margin-bottom: 15px;
 }

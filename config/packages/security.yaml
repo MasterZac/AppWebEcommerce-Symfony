@@ -23,6 +23,26 @@ security:
                 check_path: app_login
             logout:
                 path: app_logout
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+
+        # admin:
+        #     pattern: ^/admin
+        #     provider: your_provider
+        #     form_login:
+        #         login_path: login
+        #         check_path: login
+        #     logout:
+        #         path: logout
+        #     remember_me:
+        #         secret: '%kernel.secret%'
+        #         lifetime: 604800 # 1 week in seconds
+        #         path: /
+        #     guard:
+        #         authenticators:
+        #             - App\Security\LoginFormAuthenticator
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -32,8 +52,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/dashboard_admin, roles: ROLE_ADMIN }
+        - { path: ^/dashboard_user, roles: ROLE_USER }
 
 when@test:
     security:
