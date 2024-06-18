@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Registro{% endblock %}</title>
+        <title>{% block title %}Inicio sesión{% endblock %}</title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.svg')}}"/>
@@ -30,7 +30,7 @@
                                     <label for = "password">Contraseña:</label>
                                     <input type = "password" id = "password" name = "_password" class = "form-control" required>
                                 </div>
-                                <input type = "hidden" name = "_target_path" value = "/">
+                                <input type = "hidden" name = "_target_path" value = "/admin">
                                 <button type = "submit" class = "btn btn-primary btn-block">Login</button>
                                 <div class="form-group text-center mt-4">
                                     <a href="{{ path('app_inicio') }}" class="btn btn-secondary">Ir a Inicio</a>

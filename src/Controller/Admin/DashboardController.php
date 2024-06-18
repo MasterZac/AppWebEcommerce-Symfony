@@ -14,17 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
+    private AdminUrlGenerator $adminUrlGenerator;
 
-    public function __construct(
-        private AdminUrlGenerator $adminUrlGenerator
-    )
+    public function __construct( AdminUrlGenerator $adminUrlGenerator)
     {
-        
+        $this->adminUrlGenerator = $adminUrlGenerator;   
     }
     
     #[Route('/admin', name: 'dashboard_admin')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $url = $this->adminUrlGenerator
             ->setController(ProductosCrudController::class)
             ->generateUrl();
