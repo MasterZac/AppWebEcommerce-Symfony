@@ -54,6 +54,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Add Categorias', 'fas fa-plus', Categorias::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Show Categorias', 'fas fa-plus', Categorias::class)
         ]);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

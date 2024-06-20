@@ -13,6 +13,8 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 
+// use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+
 class LoginSuccessHandlerController implements AuthenticationSuccessHandlerInterface
 {
     private $router;
