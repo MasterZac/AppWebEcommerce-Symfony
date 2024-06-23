@@ -40,6 +40,16 @@ class CarritoController extends AbstractController
             'items' => $items
         ]);
     }
+    
+    // #[Route('/producto', name: 'ver_producto', methods: ['GET'])]
+    // public function verProducto(ProductosRepository $productosRepository)
+    // {
+    //     $producto = $productosRepository->findAll();
+
+    //     return $this->render('tienda/index.html.twig', [
+    //         'product' => $producto,
+    //     ]);
+    // }
 
     #[Route('/add-to-cart', name: 'add_to_cart', methods: ['POST'])]
     public function addToCart(Request $request, EntityManagerInterface $em, ProductosRepository $productosRepository, Security $security)
@@ -86,7 +96,6 @@ class CarritoController extends AbstractController
         return $this->redirectToRoute('carro_compra');
     }
 
-
     #[Route('/product/{id}', name: 'producto_venta', methods: ['GET'])]
     public function detail(Productos $producto): Response
     {
@@ -94,4 +103,35 @@ class CarritoController extends AbstractController
             'producto' => $producto,
         ]);
     }
+
+    #[Route('/carrito/total', name: 'carro_total', methods: ['GET'])]
+    public function getTotalCarrito(): JsonResponse
+    {
+        $user = $this->security->getUser();
+        $items = $this->carroCompraRepository->findBy(['usuario' => $user]);
+        
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item->getProducto()->getPrecio() * $item->getCantidad();
+        }
+
+        return new JsonResponse(['total' => $total]);
+    }
+
+    #[Route('/cancel-cart', name: 'cancel_cart', methods: ['POST'])]
+    public function cancelCart()
+    {
+        $user = $this->security->getUser();
+        $items = $this->carroCompraRepository->findBy(['usuario' => $user]);
+
+        foreach ($items as $item) {
+            $this->entityManager->remove($item);
+        }
+        $this->entityManager->flush();
+
+        $this->addFlash('success', 'Todos los productos han sido eliminados del carrito');
+        return $this->redirectToRoute('app_tienda');
+    }
+    
 }
+

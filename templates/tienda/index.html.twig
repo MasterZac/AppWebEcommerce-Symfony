@@ -61,7 +61,7 @@
                             <h3 class="price">$500<span>$500</span></h3>
                             <p class="info-text"></p>
                             <form method="post" action="{{path('add_to_cart')}}">
-                                <input type="hidden" name="product_id" value="2">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="form-group color-option">
